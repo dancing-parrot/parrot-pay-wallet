@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     options: {
         width: "100%",
         flexDirection: 'row',
-        backgroundColor: Colors.lightblue,
+        backgroundColor: Colors.darkblue,
         paddingTop: Expo.Constants.statusBarHeight,
         height: 55 + Expo.Constants.statusBarHeight,
     },
