@@ -3,7 +3,7 @@ export default {
   green: '#03DBBB',
   black: '#4D4D4D',
   darkblue: '#C0D42F',
-  lightblue: '#3D95CE',
+  lightblue: '#C0D42F',
   lightgray: '#EBEBEB',
   darkgray: '#4D4D4D',
   drawerHeaderText: '#C0C9CF',
