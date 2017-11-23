@@ -13,7 +13,7 @@ export default class Send extends Component {
     render() {
         return (
             <View style={{flex:1,paddingTop: Expo.Constants.statusBarHeight}}>
-                {/*<View style={styles.balance}>
+                <View style={styles.balance}>
                     <Text style={{color: 'white', fontSize: 25,textAlign:'center'}}>
                         You are about to pay R{this.state.reference} to eCommerce demo
                     </Text>
@@ -24,7 +24,7 @@ export default class Send extends Component {
                             Confirm
                         </Text>
                     </TouchableHighlight>
-                </View>*/}
+                </View>
             </View>
         )
     }

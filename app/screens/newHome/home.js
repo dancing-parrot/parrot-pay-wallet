@@ -33,6 +33,12 @@ export default class Home extends Component {
                 currency: {},
             },
             reference: '',
+            digit1:'',
+            digit2:'',
+            digit3:'',
+            digit4:'',
+            digit5:'',
+            digit:''
         }
     }
 
@@ -131,6 +137,7 @@ export default class Home extends Component {
                         <Text style={{fontSize: 25, color: Colors.black,textAlign:'center'}}>
                             Your balance is
                         </Text>
+
                         <Text style={{fontSize: 25, color: Colors.black,textAlign:'center'}}>
                             R 50.00
                         </Text>
@@ -149,17 +156,21 @@ export default class Home extends Component {
                         }}
                         behavior={'padding'}>
                         <TextInput maxLength={1}
+                                   onChangeText={(digit)=>this.setState({digit1:digit})}
                                    style={styles.input}/>
                         <TextInput maxLength={1}
+                                   onChangeText={(digit)=>this.setState({digit2:digit})}
                                    style={styles.input}/>
                         <TextInput maxLength={1}
+                                   onChangeText={(digit)=>this.setState({digit3:digit})}
                                    style={styles.input}/>
                         <TextInput maxLength={1}
+                                   onChangeText={(digit)=>this.setState({digit4:digit})}
                                    style={styles.input}/>
                         <TextInput maxLength={1}
+                                   onChangeText={(digit)=>this.setState({digit5:digit})}
                                    style={styles.input}/>
                     </KeyboardAvoidingView>
-                    />
                 </View>
             </View>
         )
