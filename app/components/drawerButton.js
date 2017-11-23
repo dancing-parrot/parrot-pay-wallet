@@ -7,7 +7,7 @@ const DrawerButton = ({ navigation }) => (
     <Icon
       name="ios-menu-outline"
       size={30}
-      color="white"
+      color="black"
       onPress={() => navigation.navigate('DrawerOpen')}
     />
   </TouchableOpacity>

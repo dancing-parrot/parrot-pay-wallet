@@ -20,7 +20,7 @@ export default class Account extends Component {
                             <Icon
                                 name="ios-arrow-back"
                                 size={35}
-                                color="white"
+                                color="black"
                                 onPress={() => this.props.navigation.goBack()}
                             />
                         </TouchableOpacity> :
@@ -41,7 +41,7 @@ export default class Account extends Component {
                             <Icon
                                 name="ios-qr-scanner-outline"
                                 size={30}
-                                color="white"
+                                color="black"
                                 style={{paddingRight: 10}}
                                 onPress={() => this.props.navigation.navigate('QRcodeScanner')}
                             />
@@ -53,7 +53,7 @@ export default class Account extends Component {
                             <Icon
                                 name="ios-arrow-up-outline"
                                 size={30}
-                                color="white"
+                                color="black"
                                 style={{paddingRight: 10}}
                                 /*onPress={() => this.props.navigation.navigate(
                                  'AccountCurrencies',

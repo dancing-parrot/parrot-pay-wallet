@@ -1,5 +1,16 @@
 import React, {Component} from 'react'
-import {View, StyleSheet, AsyncStorage, TouchableHighlight, Text, Image, TouchableWithoutFeedback} from 'react-native'
+import {
+    View,
+    StyleSheet,
+    AsyncStorage,
+    TouchableHighlight,
+    Text,
+    Image,
+    KeyboardAvoidingView,
+    TextInput,
+    TouchableWithoutFeedback,
+    Button
+} from 'react-native'
 import moment from 'moment'
 import PopupDialog from 'react-native-popup-dialog'
 import UserInfoService from './../../services/userInfoService'
@@ -100,32 +111,56 @@ export default class Home extends Component {
 
     render() {
         /*let swipeBtns = [{
-            text: 'Show',
-            backgroundColor: Colors.lightgray,
-            underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
-            onPress: () => this.props.navigation.navigate(
-                'AccountCurrencies',
-                {reference: this.state.reference}
-            )
-        }];*/
+         text: 'Show',
+         backgroundColor: Colors.lightgray,
+         underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
+         onPress: () => this.props.navigation.navigate(
+         'AccountCurrencies',
+         {reference: this.state.reference}
+         )
+         }];*/
         return (
             <View style={styles.container}>
                 <Header
                     navigation={this.props.navigation}
                     drawer
-
+                    right
                 />
                 <View style={styles.balance}>
-                    <View style={{flexDirection: 'row'}}>
-                        <Text style={{fontSize: 25, color: 'white'}}>
-                            {this.state.symbol}
+                    <View >
+                        <Text style={{fontSize: 25, color: Colors.black,textAlign:'center'}}>
+                            Your balance is
                         </Text>
-                        <Text style={{paddingLeft: 5, fontSize: 40, color: 'white'}}>
+                        <Text style={{fontSize: 25, color: Colors.black,textAlign:'center'}}>
+                            R 50.00
+                        </Text>
+                        {/*<Text style={{paddingLeft: 5, fontSize: 40, color: 'white'}}>
                             {this.state.balance.toFixed(4).replace(/0{0,2}$/, "")}
-                        </Text>
+                        </Text>*/}
                     </View>
+                    <KeyboardAvoidingView
+                        style={{
+                            alignSelf: 'stretch',
+                            justifyContent: 'space-around',
+                            alignItems: 'center',
+                            flex: 1,
+                            paddingHorizontal:40,
+                            flexDirection: 'row'
+                        }}
+                        behavior={'padding'}>
+                        <TextInput maxLength={1}
+                                   style={styles.input}/>
+                        <TextInput maxLength={1}
+                                   style={styles.input}/>
+                        <TextInput maxLength={1}
+                                   style={styles.input}/>
+                        <TextInput maxLength={1}
+                                   style={styles.input}/>
+                        <TextInput maxLength={1}
+                                   style={styles.input}/>
+                    </KeyboardAvoidingView>
+                    />
                 </View>
-                
             </View>
         )
     }
@@ -149,7 +184,7 @@ const styles = StyleSheet.create({
     },
     buttonbar: {
         position: 'absolute',
-        bottom:0,
+        bottom: 0,
         flexDirection: 'row',
         paddingHorizontal: 25,
         justifyContent: 'center',
@@ -172,5 +207,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    input:{
+        width: 30,
+        height: 26,
+        justifyContent: 'center',
+        alignItems:'center',
+        fontSize: 26
+    }
 })
 

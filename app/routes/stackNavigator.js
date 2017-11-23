@@ -1,6 +1,8 @@
 import {StackNavigator} from 'react-navigation'
 
 import Home from './drawerNavigator'
+import SendNew from './../screens/newHome/send'
+import Success from '../screens/newHome/success'
 import Login from './../screens/auth/login'
 import InitialScreen from './../screens/home/initialScreen'
 import Signup from './../screens/auth/signup'
@@ -11,7 +13,7 @@ import BitcoinAddresses from './../screens/withdraw/bitcoinAddresses'
 import WithdrawalAmountEntry from './../screens/withdraw/amountEntry'
 import SendMoney from './../screens/transfer/amountEntry'
 import SendTo from './../screens/transfer/sendTo'
-import QRcodeScanner from './../screens/transfer/qrcodeScanner'
+import QRcodeScanner from './../screens/newHome/qrcodeScanner'
 import AccountCurrencies from './../screens/accounts/accountCurrencies'
 import UploadImage from './../screens/settings/profileImage/uploadImage'
 import SettingsPersonalDetails from './../screens/settings/personalDetails'
@@ -45,6 +47,12 @@ import MobileNotifications from './../screens/settings/notifications/mobileNotif
 const Stack = {
     Home: {
         screen: Home,
+    },
+    SendNew:{
+        screen:SendNew
+    },
+    Success:{
+        screen:Success
     },
     InitialScreen:{
         screen:InitialScreen
