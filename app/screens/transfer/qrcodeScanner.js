@@ -1,6 +1,7 @@
-import React, {Component} from 'react'
-import {Text, View, StyleSheet, TouchableHighlight, Alert} from 'react-native'
-import Expo, {Permissions} from 'expo'
+import React, { Component } from 'react'
+import { Text, View, StyleSheet, TouchableHighlight, Alert } from 'react-native'
+import Expo, { Permissions } from 'expo'
+import Big from 'big.js'
 import Colors from './../../config/colors'
 import Header from './../../components/header'
 import TransactionService from './../../services/transactionService'
@@ -20,24 +21,28 @@ export default class QRcodeScanner extends Component {
     }
 
     async componentWillMount() {
-        const {status} = await Permissions.askAsync(Permissions.CAMERA)
-        this.setState({hasCameraPermission: status === 'granted'})
+        const { status } = await Permissions.askAsync(Permissions.CAMERA)
+        this.setState({ hasCameraPermission: status === 'granted' })
     }
 
     transferConfirmed = async () => {
-        let responseJson = await TransactionService.sendMoneyWithData(this.state.reference.amount, "helghardt+parrot@rehive.com", this.state.reference.code)
+        let amount = new Big(this.state.reference.amount)
+        for (let i = 0; i < 2; i++) {
+            amount = amount.times(10)
+        }
+        let responseJson = await TransactionService.sendMoneyWithData(amount, JSON.stringify(this.state.reference))
         if (responseJson.status === "success") {
             ResetNavigation.dispatchToSingleRoute(this.props.navigation, "Success")
         }
         else {
             Alert.alert('Error',
                 responseJson.message,
-                [{text: 'OK'}])
+                [{ text: 'OK' }])
         }
     }
 
     render() {
-        const {hasCameraPermission} = this.state
+        const { hasCameraPermission } = this.state
         if (hasCameraPermission === null) {
             return <Text>No access to camera</Text>
         } else if (hasCameraPermission === false) {
@@ -45,7 +50,7 @@ export default class QRcodeScanner extends Component {
         } else {
             if (this.state.camera === true) {
                 return (
-                    <View style={{flex: 1}}>
+                    <View style={{ flex: 1 }}>
                         <Header
                             navigation={this.props.navigation}
                             back
@@ -53,26 +58,24 @@ export default class QRcodeScanner extends Component {
                         />
                         <Expo.BarCodeScanner
                             onBarCodeRead={this._handleBarCodeRead}
-                            style={{flex: 1}}
+                            style={{ flex: 1 }}
                         />
                     </View>
                 )
             }
             else {
                 return (
-                    <View style={{flex: 1, paddingTop: Expo.Constants.statusBarHeight}}>
+                    <View style={{ flex: 1, paddingTop: Expo.Constants.statusBarHeight }}>
+                        
                         <View style={styles.balance}>
-                            <Text style={{color: 'white', fontSize: 25, textAlign: 'center'}}>
-                                You are about to pay R to eCommerce demo
+                            <Text style={{ color: 'white', fontSize: 25, textAlign: 'center' }}>
+                                You are about to pay R{this.state.reference.amount} to eCommerce demo
                             </Text>
                         </View>
                         <View style={styles.transaction}>
-                            <Text>
-                                {this.state.reference}
-                            </Text>
                             <TouchableHighlight style={styles.submit}
-                                                onPress={this.transferConfirmed}>
-                                <Text style={{color: 'white', fontSize: 20}}>
+                                onPress={this.transferConfirmed}>
+                                <Text style={{ color: 'white', fontSize: 20 }}>
                                     Confirm
                                 </Text>
                             </TouchableHighlight>
@@ -84,7 +87,7 @@ export default class QRcodeScanner extends Component {
     }
 
     _handleBarCodeRead = (data) => {
-        this.setState({camera: false, reference: JSON.stringify(data.data)})
+        this.setState({ camera: false, reference: JSON.parse(data.data) })
     }
 }
 
@@ -118,14 +121,14 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.orange,
         justifyContent: 'center',
         alignItems: 'center',
-        paddingHorizontal:20
+        paddingHorizontal: 20
     },
     transaction: {
         flex: 5,
         backgroundColor: 'white',
-        justifyContent:'flex-end',
-        paddingBottom:10,
-        paddingHorizontal:20
+        justifyContent: 'flex-end',
+        paddingBottom: 10,
+        paddingHorizontal: 20
     },
     submit: {
         backgroundColor: Colors.lightblue,
