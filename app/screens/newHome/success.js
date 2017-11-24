@@ -7,29 +7,35 @@ import {
     Image
 } from 'react-native'
 import Expo from 'expo'
+import Header from './../../components/headerParrot'
+import ResetNavigation from './../../util/resetNavigation'
 
 import Colors from './../../config/colors'
 
 export default class Success extends Component {
     render() {
         return (
-            <View style={{flex: 1, paddingTop: Expo.Constants.statusBarHeight}}>
+            <View style={{flex: 1, paddingTop: Expo.Constants.statusBarHeight,backgroundColor:'white'}}>
+                <Header
+                    navigation={this.props.navigation}
+                    homeLeft
+                />
                 <View style={styles.balance}>
                     <Text style={{color: 'white', fontSize: 25, textAlign: 'center'}}>
                         Success
                     </Text>
                 </View>
                 <View style={styles.transaction}>
-                    {/*<Image
-                        source={require('./../../../assets/icons/flash.png')}
+                    <Image
+                        source={require('./../../../assets/icons/parrot.png')}
                         resizeMode="contain"
-                        style={styles.image}/>*/}
-                    <TouchableHighlight style={styles.submit}>
-                        <Text style={{color: 'white', fontSize: 20}}>
-                            Cool
-                        </Text>
-                    </TouchableHighlight>
+                        style={styles.image}/>
                 </View>
+                <TouchableHighlight style={styles.submit} onPress={()=>ResetNavigation.dispatchToSingleRoute(this.props.navigation, "Home")}>
+                    <Text style={{color: 'white', fontSize: 20}}>
+                        Cool
+                    </Text>
+                </TouchableHighlight>
             </View>
         )
     }
@@ -37,16 +43,16 @@ export default class Success extends Component {
 
 const styles = StyleSheet.create({
     balance: {
-        flex: 2,
+        flex: 1,
         backgroundColor: Colors.orange,
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         alignItems: 'center',
         paddingHorizontal: 20
     },
     transaction: {
         flex: 5,
         backgroundColor: 'white',
-        justifyContent: 'flex-end',
+        justifyContent: 'center',
         paddingBottom: 10,
         paddingHorizontal: 20
     },
@@ -56,6 +62,8 @@ const styles = StyleSheet.create({
         borderRadius: 25,
         alignItems: 'center',
         justifyContent: 'center',
+        marginBottom:10,
+        marginHorizontal:20
     },
     image: {
         maxWidth: 250,

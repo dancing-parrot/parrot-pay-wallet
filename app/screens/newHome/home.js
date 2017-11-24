@@ -154,21 +154,11 @@ export default class Home extends Component {
                             flexDirection: 'row'
                         }}
                         behavior={'padding'}>
-                        <TextInput maxLength={1}
-                                   onChangeText={(digit)=>this.setState({digit1:digit})}
-                                   style={styles.input}/>
-                        <TextInput maxLength={1}
-                                   onChangeText={(digit)=>this.setState({digit2:digit})}
-                                   style={styles.input}/>
-                        <TextInput maxLength={1}
-                                   onChangeText={(digit)=>this.setState({digit3:digit})}
-                                   style={styles.input}/>
-                        <TextInput maxLength={1}
-                                   onChangeText={(digit)=>this.setState({digit4:digit})}
-                                   style={styles.input}/>
-                        <TextInput maxLength={1}
-                                   onChangeText={(digit)=>this.setState({digit5:digit})}
-                                   style={styles.input}/>
+                        <View style={{borderColor:'black',borderWidth:2}}/>
+                        <View style={{borderColor:'black',borderWidth:2}}/>
+                        <View style={{borderColor:'black',borderWidth:2}}/>
+                        <View style={{borderColor:'black',borderWidth:2}}/>
+                        <View style={{borderColor:'black',borderWidth:2}}/>
                     </KeyboardAvoidingView>
                 </View>
             </View>

@@ -4,6 +4,7 @@ import Expo, { Permissions } from 'expo'
 import Big from 'big.js'
 import Colors from './../../config/colors'
 import Header from './../../components/header'
+import HeaderParrot from './../../components/headerParrot'
 import TransactionService from './../../services/transactionService'
 import ResetNavigation from './../../util/resetNavigation'
 
@@ -66,7 +67,10 @@ export default class QRcodeScanner extends Component {
             else {
                 return (
                     <View style={{ flex: 1, paddingTop: Expo.Constants.statusBarHeight }}>
-                        
+                        <HeaderParrot
+                            navigation={this.props.navigation}
+                            back
+                        />
                         <View style={styles.balance}>
                             <Text style={{ color: 'white', fontSize: 25, textAlign: 'center' }}>
                                 You are about to pay R{this.state.reference.amount} to eCommerce demo
@@ -117,7 +121,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
     },
     balance: {
-        flex: 2,
+        flex: 1,
         backgroundColor: Colors.orange,
         justifyContent: 'center',
         alignItems: 'center',
