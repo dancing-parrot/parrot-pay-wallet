@@ -52,18 +52,18 @@ export default class RedeemVoucher extends Component{
                         source={require('./../../../assets/icons/flash.png')}
                         resizeMode="contain"
                         style={styles.image}/>
-                    <TouchableHighlight style={styles.submit} onPress={
-                        ()=>{
-                                Alert.alert('Success',
-                                    "Transaction successful",
-                                    [{text: 'OK', onPress: () => ResetNavigation.dispatchToSingleRoute(this.props.navigation, "Home")}])
-
-                        }}>
-                        <Text style={{color: 'black', fontSize: 20}}>
-                            Redeem
-                        </Text>
-                    </TouchableHighlight>
                 </View>
+                <TouchableHighlight style={styles.submit} onPress={
+                    ()=>{
+                        Alert.alert('Success',
+                            "Your balance has been loaded with R100.00 credits.",
+                            [{text: 'OK', onPress: () => console.log("Successful")}])
+
+                    }}>
+                    <Text style={{color: 'black', fontSize: 20}}>
+                        Redeem
+                    </Text>
+                </TouchableHighlight>
             </View>
         )
     }
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
-        backgroundColor: 'white',
+        backgroundColor: Colors.darkblue,
     },
     balance: {
         flex: 1,
@@ -123,6 +123,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         marginBottom:10,
-        paddingHorizontal:20
+        marginHorizontal:20
     },
 })

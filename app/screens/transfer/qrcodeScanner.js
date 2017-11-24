@@ -28,9 +28,6 @@ export default class QRcodeScanner extends Component {
 
     transferConfirmed = async () => {
         let amount = new Big(this.state.reference.amount)
-        for (let i = 0; i < 2; i++) {
-            amount = amount.times(10)
-        }
         let responseJson = await TransactionService.sendMoneyWithData(amount, JSON.stringify(this.state.reference))
         if (responseJson.status === "success") {
             ResetNavigation.dispatchToSingleRoute(this.props.navigation, "Success")
@@ -66,14 +63,14 @@ export default class QRcodeScanner extends Component {
             }
             else {
                 return (
-                    <View style={{ flex: 1, paddingTop: Expo.Constants.statusBarHeight }}>
+                    <View style={{ flex: 1 }}>
                         <HeaderParrot
                             navigation={this.props.navigation}
                             back
                         />
                         <View style={styles.balance}>
                             <Text style={{ color: 'white', fontSize: 25, textAlign: 'center' }}>
-                                You are about to pay R{this.state.reference.amount} to eCommerce demo
+                                You are about to pay R{this.state.reference.amount / 100} to eCommerce demo
                             </Text>
                         </View>
                         <View style={styles.transaction}>

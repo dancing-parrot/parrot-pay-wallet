@@ -22,7 +22,7 @@ var transactionService = {
         var data = {
             amount,
             recipient: 'helghardt+parrot@rehive.com',
-            debit_metadata: metadata,
+            credit_metadata: metadata,
         }
         return BaseService.post('transactions/transfer/', data)
     },

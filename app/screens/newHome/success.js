@@ -15,7 +15,7 @@ import Colors from './../../config/colors'
 export default class Success extends Component {
     render() {
         return (
-            <View style={{flex: 1, paddingTop: Expo.Constants.statusBarHeight,backgroundColor:'white'}}>
+            <View style={{flex: 1, backgroundColor:'white'}}>
                 <Header
                     navigation={this.props.navigation}
                     homeLeft
