@@ -137,9 +137,8 @@ export default class Home extends Component {
                         <Text style={{fontSize: 25, color: Colors.black,textAlign:'center'}}>
                             Your balance is
                         </Text>
-
                         <Text style={{fontSize: 25, color: Colors.black,textAlign:'center'}}>
-                            R 50.00
+                            {this.state.symbol}{this.state.balance.toFixed(4).replace(/0{0,2}$/, "")}
                         </Text>
                         {/*<Text style={{paddingLeft: 5, fontSize: 40, color: 'white'}}>
                             {this.state.balance.toFixed(4).replace(/0{0,2}$/, "")}

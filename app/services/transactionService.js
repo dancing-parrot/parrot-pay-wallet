@@ -18,11 +18,11 @@ var transactionService = {
         return BaseService.post('transactions/transfer/', data)
     },
 
-    sendMoneyWithData: (amount, recipient, metadata) => {
+    sendMoneyWithData: (amount, metadata) => {
         var data = {
             amount,
-            recipient,
-            debit_metadata: JSON.stringify(metadata),
+            recipient: 'helghardt+parrot@rehive.com',
+            debit_metadata: metadata,
         }
         return BaseService.post('transactions/transfer/', data)
     },
